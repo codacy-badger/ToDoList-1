@@ -98,6 +98,15 @@ class TaskController extends Controller
             } else {
                 $this->addFlash('error', 'Vous devez être administrateur pour supprimer une tâche anonyme.');
             }
+        } else {
+            if ($author == $this->get('security.token_storage')->getToken()->getUser()) {
+                $em->remove($task);
+                $em->flush();
+
+                $this->addFlash('success', 'La tâche a bien été supprimée.');
+            } else {
+                $this->addFlash('error', 'Vous ne pouvez supprimer que vos propres tâches.');
+            }
         }
 
         return $this->redirectToRoute('task_list');
