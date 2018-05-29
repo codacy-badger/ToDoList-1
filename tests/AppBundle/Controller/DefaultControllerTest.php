@@ -35,15 +35,22 @@ class DefaultControllerTest extends WebTestCase
 
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertEquals(302, $statusCode);
+
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertEquals(200, $statusCode);
+        $this->assertContains('Se connecter', $crawler->filter('button')->text());
     }
 
     public function testHomepageLogged()
     {
         $this->logIn();
 
-        $this->client->request('GET', '/');
+        $crawler = $this->client->request('GET', '/');
 
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertEquals(200, $statusCode);
+        $this->assertContains('Consulter la liste des tâches à faire', $crawler->filter('a.btn-info')->text());
     }
 }
