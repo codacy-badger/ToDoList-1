@@ -32,7 +32,6 @@ class DefaultControllerTest extends WebTestCase
     public function testHomepageAnonymous()
     {
         $this->client->request('GET', '/');
-
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertEquals(302, $statusCode);
 
