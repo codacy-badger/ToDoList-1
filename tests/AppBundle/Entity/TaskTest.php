@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TaskTest extends WebTestCase
 {
-    public function testCreateTask()
+    public function testTask()
     {
         $task = new Task();
         $task->setTitle('Test de tâches');
@@ -28,6 +28,5 @@ class TaskTest extends WebTestCase
 
         $task->toggle('testFlag');
         $this->assertEquals('testFlag', $task->isDone());
-
     }
 }
