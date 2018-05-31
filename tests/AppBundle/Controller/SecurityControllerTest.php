@@ -2,7 +2,6 @@
 
 namespace Tests\AppBundle\Controller;
 
-use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SecurityControllerTest extends WebTestCase
@@ -19,8 +18,6 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', '/login');
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertSame(200, $statusCode);
-
-
     }
 
 }
