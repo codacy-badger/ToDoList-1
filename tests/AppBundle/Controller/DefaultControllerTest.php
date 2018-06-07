@@ -3,8 +3,6 @@
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
 use Tests\AppBundle\TestTrait;
 
 class DefaultControllerTest extends WebTestCase
@@ -16,20 +14,6 @@ class DefaultControllerTest extends WebTestCase
     public function setUp()
     {
         $this->client = static::createClient();
-    }
-
-    private function logIn()
-    {
-        $session = $this->client->getContainer()->get('session');
-        $firewallName = 'main';
-
-        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
-        $session->set('_security_' . $firewallName, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
-
     }
 
     public function testHomepageAnonymous()
