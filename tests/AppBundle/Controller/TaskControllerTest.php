@@ -2,21 +2,33 @@
 
 namespace Tests\AppBundle\Controller;
 
-use Tests\AppBundle\TestTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\BrowserKit\Cookie;
 
 class TaskControllerTest extends WebTestCase
 {
-    use TestTrait;
-
     public function setUp()
     {
         $this->client = static::createClient();
     }
 
+    public function login()
+    {
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
+
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+    }
+
     public function testListAction()
     {
-        $this->logInUser();
+        $this->login();
 
         $crawler = $this->client->request('GET', '/tasks');
         $statusCode = $this->client->getResponse()->getStatusCode();
@@ -26,7 +38,7 @@ class TaskControllerTest extends WebTestCase
 
     public function testCreateAction()
     {
-        $this->logInUser();
+        $this->login();
         $crawler = $this->client->request('GET', '/tasks/create');
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertSame(200, $statusCode);
