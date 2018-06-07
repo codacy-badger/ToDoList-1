@@ -103,4 +103,24 @@ class TaskControllerTest extends WebTestCase
         $this->em->remove($task);
         $this->em->flush();
     }
+
+    public function testToggleTaskAction()
+    {
+        $this->login();
+        $this->createTask();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+
+        $this->client->request('GET', 'tasks/' . $taskId . '/toggle');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(302, $statusCode);
+
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("a bien été marquée comme faite")')->count());
+    }
 }
