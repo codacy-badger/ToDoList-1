@@ -23,4 +23,23 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(200, $statusCode);
         $this->assertSame(1, $crawler->filter('html:contains("Liste des tâches")')->count());
     }
+
+    public function testCreateAction()
+    {
+        $this->logInUser();
+        $crawler = $this->client->request('GET', '/tasks/create');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Créer une tâche")')->count());
+
+        $form = $crawler->selectButton('Ajouter')->form();
+        $form['task[title]'] = 'testTitle';
+        $form['task[content]'] = 'testContent';
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
+    }
 }
