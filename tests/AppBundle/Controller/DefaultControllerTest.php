@@ -5,9 +5,12 @@ namespace Tests\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\BrowserKit\Cookie;
+use Tests\AppBundle\TestTrait;
 
 class DefaultControllerTest extends WebTestCase
 {
+    use TestTrait;
+
     private $client;
 
     public function setUp()
@@ -44,7 +47,7 @@ class DefaultControllerTest extends WebTestCase
 
     public function testHomepageLogged()
     {
-        $this->logIn();
+        $this->logInUser();
 
         $crawler = $this->client->request('GET', '/');
 
