@@ -23,7 +23,7 @@ class TaskControllerTest extends WebTestCase
         $session = $this->client->getContainer()->get('session');
         $firewallName = 'main';
 
-        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_ADMIN'));
         $session->set('_security_' . $firewallName, serialize($token));
         $session->save();
 
@@ -33,12 +33,9 @@ class TaskControllerTest extends WebTestCase
 
     public function createTask()
     {
-        $this->login();
-
         $task = new Task();
-        $task->setTitle('titleTest');
-        $task->setContent('contentTest');
-        $task->setAuthor($this->client);
+        $task->setTitle('testTitle');
+        $task->setContent('testContent');
         $this->em->persist($task);
         $this->em->flush();
     }
@@ -73,6 +70,36 @@ class TaskControllerTest extends WebTestCase
 
         $task = $this->em->getRepository('AppBundle:Task')
             ->findOneBy(['title' => 'testTitle']);
+        $this->em->remove($task);
+        $this->em->flush();
+    }
+
+    public function testEditAction()
+    {
+        $this->login();
+        $this->createTask();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+
+        $crawler = $this->client->request('GET', 'tasks/' . $taskId . '/edit');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Modifier")')->count());
+
+        $form = $crawler->selectButton('Modifier')->form();
+        $form['task[title]'] = 'testTitleModified';
+        $form['task[content]'] = 'testContentModified';
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitleModified']);
         $this->em->remove($task);
         $this->em->flush();
     }
