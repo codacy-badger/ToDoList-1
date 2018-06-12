@@ -122,5 +122,10 @@ class TaskControllerTest extends WebTestCase
         $statusCode = $this->client->getResponse()->getStatusCode();
         $this->assertSame(200, $statusCode);
         $this->assertSame(1, $crawler->filter('html:contains("a bien été marquée comme faite")')->count());
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $this->em->remove($task);
+        $this->em->flush();
     }
 }
