@@ -128,4 +128,20 @@ class TaskControllerTest extends WebTestCase
         $this->em->remove($task);
         $this->em->flush();
     }
+
+    public function testDeleteAction()
+    {
+        $this->login();
+        $this->createTask();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+
+        $this->client->request('GET', 'tasks/' . $taskId . '/delete');
+        $crawler = $this->client->followRedirect();
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Superbe")')->count());
+    }
 }
