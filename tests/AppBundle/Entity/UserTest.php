@@ -11,15 +11,15 @@ class UserTest extends WebTestCase
     {
         $user = new User();
 
-        $user->setUsername('userTest');
-        $user->setPassword('passwordTest');
-        $user->setEmail('emailTest@test.com');
+        $user->setUsername('testUser');
+        $user->setPassword('testPassword');
+        $user->setEmail('testEmail@test.com');
         $user->setRoles('ROLE_USER');
 
         $this->assertEquals(null, $user->getId());
-        $this->assertEquals('userTest', $user->getUsername());
-        $this->assertEquals('passwordTest', $user->getPassword());
-        $this->assertEquals('emailTest@test.com', $user->getEmail());
+        $this->assertEquals('testUser', $user->getUsername());
+        $this->assertEquals('testPassword', $user->getPassword());
+        $this->assertEquals('testEmail@test.com', $user->getEmail());
         $this->assertEquals('ROLE_USER', $user->getRoles());
         $this->assertEquals(null, $user->getSalt());
     }

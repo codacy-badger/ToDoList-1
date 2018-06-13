@@ -11,8 +11,8 @@ class TaskTest extends WebTestCase
     public function testTask()
     {
         $task = new Task();
-        $task->setTitle('Test de tâches');
-        $task->setContent('Test de tâches');
+        $task->setTitle('testTitle');
+        $task->setContent('testContent');
         $author = new User();
         $task->setAuthor($author);
         $date = new \DateTime();
@@ -20,8 +20,8 @@ class TaskTest extends WebTestCase
         $task->setIsDone(true);
 
         $this->assertEquals(null, $task->getId());
-        $this->assertEquals('Test de tâches', $task->getTitle());
-        $this->assertEquals('Test de tâches', $task->getContent());
+        $this->assertEquals('testTitle', $task->getTitle());
+        $this->assertEquals('testContent', $task->getContent());
         $this->assertEquals($author, $task->getAuthor());
         $this->assertEquals($date, $task->getCreatedAt());
         $this->assertEquals(true, $task->getIsDone());

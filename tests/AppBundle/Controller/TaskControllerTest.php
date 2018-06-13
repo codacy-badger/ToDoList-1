@@ -23,7 +23,7 @@ class TaskControllerTest extends WebTestCase
         $session = $this->client->getContainer()->get('session');
         $firewallName = 'main';
 
-        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_ADMIN'));
+        $token = new UsernamePasswordToken('testUser', 'testPassword', $firewallName, array('ROLE_ADMIN'));
         $session->set('_security_' . $firewallName, serialize($token));
         $session->save();
 

@@ -39,4 +39,31 @@ class UserControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Liste des utilisateurs")')->count());
     }
 
+    public function testCreateAction()
+    {
+        $this->login();
+
+        $crawler = $this->client->request('GET', '/users/create');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Tapez le mot de passe à nouveau")')->count());
+
+        $form = $crawler->selectButton('Ajouter')->form();
+        $form['user[username]'] = 'testUser';
+        $form['user[password][first]'] = 'testPassword';
+        $form['user[password][second]'] = 'testPassword';
+        $form['user[email]'] = 'testEmail@test.com';
+
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Superbe")')->count());
+
+        $user = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['username' => 'testUser']);
+        $this->em->remove($user);
+        $this->em->flush();
+    }
 }

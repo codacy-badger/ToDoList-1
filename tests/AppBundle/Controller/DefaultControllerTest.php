@@ -20,7 +20,7 @@ class DefaultControllerTest extends WebTestCase
         $session = $this->client->getContainer()->get('session');
         $firewallName = 'main';
 
-        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $token = new UsernamePasswordToken('testUser', 'testPassword', $firewallName, array('ROLE_USER'));
         $session->set('_security_' . $firewallName, serialize($token));
         $session->save();
 
