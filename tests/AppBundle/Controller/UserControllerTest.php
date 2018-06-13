@@ -5,6 +5,7 @@ namespace Tests\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\BrowserKit\Cookie;
+use AppBundle\Entity\User;
 
 class UserControllerTest extends WebTestCase
 {
@@ -28,6 +29,17 @@ class UserControllerTest extends WebTestCase
 
         $cookie = new Cookie($session->getName(), $session->getId());
         $this->client->getCookieJar()->set($cookie);
+    }
+
+    public function createUser()
+    {
+        $user = new User();
+        $user->setUsername('testUser');
+        $user->setPassword('testPassword');
+        $user->setEmail('testEmail@test.com');
+        $user->setRoles(array('ROLE_USER'));
+        $this->em->persist($user);
+        $this->em->flush();
     }
 
     public function testListAction()
@@ -63,6 +75,38 @@ class UserControllerTest extends WebTestCase
 
         $user = $this->em->getRepository('AppBundle:User')
             ->findOneBy(['username' => 'testUser']);
+        $this->em->remove($user);
+        $this->em->flush();
+    }
+
+    public function testEditAction()
+    {
+        $this->createUser();
+        $user = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['username' => 'testUser']);
+        $userId = $user->getId();
+
+        $this->login();
+        $crawler = $this->client->request('GET', '/users/' . $userId . '/edit');
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+
+        $form = $crawler->selectButton('Modifier')->form();
+        $form['user[username]'] = 'testUserEdit';
+        $form['user[password][first]'] = 'testPasswordEdit';
+        $form['user[password][second]'] = 'testPasswordEdit';
+        $form['user[email]'] = 'testEmailEdit@test.com';
+
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Superbe")')->count());
+
+        $user = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['username' => 'testUserEdit']);
         $this->em->remove($user);
         $this->em->flush();
     }
