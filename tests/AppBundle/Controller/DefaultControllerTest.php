@@ -3,16 +3,53 @@
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\BrowserKit\Cookie;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    private $client;
+
+    public function setUp()
     {
-        $client = static::createClient();
+        $this->client = static::createClient();
+    }
 
-        $crawler = $client->request('GET', '/');
+    public function login()
+    {
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+    }
+
+
+    public function testHomepageAnonymous()
+    {
+        $this->client->request('GET', '/');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertEquals(302, $statusCode);
+
+        $crawler = $this->client->followRedirect();
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertEquals(200, $statusCode);
+        $this->assertContains('Se connecter', $crawler->filter('button')->text());
+    }
+
+    public function testHomepageLogged()
+    {
+        $this->login();
+
+        $crawler = $this->client->request('GET', '/');
+
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertEquals(200, $statusCode);
+        $this->assertContains('Consulter la liste des tâches à faire', $crawler->filter('a.btn-info')->text());
     }
 }
