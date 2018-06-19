@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff77b01-9a16-4d4b-932e-f45e7a0bf844" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/collaborate.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/AppBundle.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/AppBundle.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/DefaultController.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/DefaultController.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/SecurityController.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/SecurityController.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/TaskController.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/TaskController.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/UserController.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/UserController.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Controller/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Controller/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Entity/Task.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Entity/Task.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Entity/User.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Entity/User.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Entity/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Entity/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Entity/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Entity/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Form/TaskType.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Form/TaskType.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Form/UserType.php.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Form/UserType.php.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Form/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Form/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/Form/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/Form/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test-coverage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/test-coverage/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,14 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="collaborate.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/collaborate.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="311">
-                <caret line="19" column="211" selection-start-line="19" selection-start-column="211" selection-end-line="19" selection-end-column="211" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="UserControllerTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -39,29 +55,29 @@
       <list>
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/sfsq" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Task.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/DataFixtures.php" />
         <option value="$PROJECT_DIR$/phpunit.xml.dist" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Form/TaskTypeTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Form/UserTypeTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/TestTrait.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/task/list.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/task/create.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/TaskController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/UserTest.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/TaskTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php" />
         <option value="$PROJECT_DIR$/authentication.md" />
         <option value="$PROJECT_DIR$/collaborate.md" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Task.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/TaskTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/UserTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Form/TaskTypeTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Form/UserTypeTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php" />
       </list>
     </option>
   </component>
@@ -163,6 +179,24 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ToDoList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ToDoList" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ToDoList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ToDoList" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ToDoList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ToDoList" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -220,7 +254,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78182000" />
+    <option name="totallyTimeSpent" value="79418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1423" y="-4" width="1309" height="772" extended-state="6" />
@@ -239,12 +273,24 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29612035" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32917318" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.22620904" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,13 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Form/UserTypeTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/task/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -478,66 +517,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="126" column="5" selection-start-line="126" selection-start-column="5" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Form/TaskTypeTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/TaskTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/UserTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="27" lean-forward="true" selection-start-line="153" selection-start-column="27" selection-end-line="153" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="110" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -552,13 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="33" column="40" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="33" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -586,6 +562,76 @@
             <caret line="19" column="211" selection-start-line="19" selection-start-column="211" selection-end-line="19" selection-end-column="211" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2312">
+          <caret line="137" column="21" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/TaskTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Form/TaskTypeTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Form/UserTypeTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/UserTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-369">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/SecurityControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="161" lean-forward="true" selection-start-line="161" selection-end-line="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/UserControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -11,13 +11,13 @@ class TaskTest extends WebTestCase
     public function testTask()
     {
         $task = new Task();
-        $task->setTitle('testTitle');
-        $task->setContent('testContent');
         $author = new User();
-        $task->setAuthor($author);
         $date = new \DateTime();
-        $task->setCreatedAt($date);
-        $task->setIsDone(true);
+        $task->setTitle('testTitle')
+            ->setContent('testContent')
+            ->setAuthor($author)
+            ->setCreatedAt($date)
+            ->setIsDone(true);
 
         $this->assertEquals(null, $task->getId());
         $this->assertEquals('testTitle', $task->getTitle());
