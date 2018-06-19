@@ -34,10 +34,11 @@ class UserControllerTest extends WebTestCase
     public function createUser()
     {
         $user = new User();
-        $user->setUsername('testUser');
-        $user->setPassword('testPassword');
-        $user->setEmail('testEmail@test.com');
-        $user->setRoles(array('ROLE_USER'));
+        $user->setUsername('testUser')
+            ->setPassword('testPassword')
+            ->setEmail('testEmail@test.com')
+            ->setRoles(array('ROLE_USER'));
+
         $this->em->persist($user);
         $this->em->flush();
     }

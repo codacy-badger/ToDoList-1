@@ -20,12 +20,13 @@ class SecurityControllerTest extends WebTestCase
     public function testLoginAction()
     {
         $user = new User();
-        $user->setUsername('testUser');
         $this->encoder = static::$kernel->getContainer()->get('security.password_encoder');
         $encodedPassword = $this->encoder->encodePassword($user, 'testPassword');
-        $user->setPassword($encodedPassword);
-        $user->setEmail('testEmail@test.com');
-        $user->setRoles(array('ROLE_USER'));
+        $user->setUsername('testUser')
+            ->setPassword($encodedPassword)
+            ->setEmail('testEmail@test.com')
+            ->setRoles(array('ROLE_USER'));
+
         $this->em->persist($user);
         $this->em->flush();
 

@@ -35,8 +35,8 @@ class TaskControllerTest extends WebTestCase
     public function createTask()
     {
         $task = new Task();
-        $task->setTitle('testTitle');
-        $task->setContent('testContent');
+        $task->setTitle('testTitle')
+            ->setContent('testContent');
         $this->em->persist($task);
         $this->em->flush();
     }
@@ -152,10 +152,11 @@ class TaskControllerTest extends WebTestCase
         $this->createTask();
 
         $user = new User();
-        $user->setUsername('testUser');
-        $user->setPassword('testPassword');
-        $user->setEmail('testEmail@test.com');
-        $user->setRoles(array('ROLE_USER'));
+        $user->setUsername('testUser')
+            ->setPassword('testPassword')
+            ->setEmail('testEmail@test.com')
+            ->setRoles(array('ROLE_USER'));
+
         $this->em->persist($user);
         $this->em->flush();
 
