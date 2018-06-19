@@ -18,8 +18,9 @@ class TaskTypeTest extends TypeTestCase
         $form = $this->factory->create(TaskType::class);
 
         $task = new Task();
-        $task->setTitle($formData['title']);
-        $task->setContent($formData['content']);
+        $task->setTitle($formData['title'])
+            ->setContent($formData['content']);
+
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());

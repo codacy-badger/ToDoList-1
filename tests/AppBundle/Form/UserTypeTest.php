@@ -39,10 +39,11 @@ class UserTypeTest extends TypeTestCase
         $form = $this->factory->create(UserType::class);
 
         $user = new User();
-        $user->setRoles($formData['roles']);
-        $user->setUsername($formData['username']);
-        $user->setPassword($formData['password']['first']);
-        $user->setEmail($formData['email']);
+        $user->setRoles($formData['roles'])
+            ->setUsername($formData['username'])
+            ->setPassword($formData['password']['first'])
+            ->setEmail($formData['email']);
+
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
