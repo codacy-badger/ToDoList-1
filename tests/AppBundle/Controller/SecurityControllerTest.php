@@ -47,4 +47,18 @@ class SecurityControllerTest extends WebTestCase
         $this->em->flush();
     }
 
+    public function testBadCredentialsLoginAction()
+    {
+        $crawler = $this->client->request('GET', '/login');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+
+        $form = $crawler->selectButton('Se connecter')->form();
+        $form['_username'] = 'badUser';
+        $form['_password'] = 'badPassword';
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSame(1, $crawler->filter('html:contains("Invalid credentials.")')->count());
+    }
 }
