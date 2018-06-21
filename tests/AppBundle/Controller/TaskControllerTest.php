@@ -147,11 +147,37 @@ class TaskControllerTest extends WebTestCase
     }
 
     public function testDeleteAnonymousWhileNotAdminAction()
-    {}
+    {
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
+
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+
+        $this->createTask();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+
+        $this->client->request('GET', 'tasks/' . $taskId . '/delete');
+        $crawler = $this->client->followRedirect();
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Oops ! Vous devez être administrateur pour supprimer une tâche anonyme.")')->count());
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $this->em->remove($task);
+        $this->em->flush();
+    }
 
     public function testDeleteAuthorAction()
     {
-        $this->login();
         $this->createTask();
 
         $user = new User();
@@ -192,7 +218,6 @@ class TaskControllerTest extends WebTestCase
 
     public function testDeleteBadAuthorAction()
     {
-        $this->login();
         $this->createTask();
 
         $author = new User();

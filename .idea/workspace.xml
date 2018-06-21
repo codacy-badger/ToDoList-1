@@ -64,8 +64,8 @@
       <file leaf-file-name="TaskControllerTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="242" column="46" lean-forward="true" selection-start-line="242" selection-start-column="46" selection-end-line="242" selection-end-column="46" />
+            <state relative-caret-position="39">
+              <caret line="219" column="5" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -274,12 +274,12 @@
       <workItem from="1528985433969" duration="11000" />
       <workItem from="1528987138415" duration="1008000" />
       <workItem from="1529408698361" duration="1539000" />
-      <workItem from="1529561162538" duration="2850000" />
+      <workItem from="1529561162538" duration="3204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82905000" />
+    <option name="totallyTimeSpent" value="83259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1422" y="-11" width="1311" height="780" extended-state="6" />
@@ -643,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/TaskControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="242" column="46" lean-forward="true" selection-start-line="242" selection-start-column="46" selection-end-line="242" selection-end-column="46" />
+        <state relative-caret-position="39">
+          <caret line="219" column="5" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
         </state>
       </provider>
     </entry>
