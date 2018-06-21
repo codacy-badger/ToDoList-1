@@ -52,6 +52,23 @@ class UserControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Liste des utilisateurs")')->count());
     }
 
+    public function testListRoleUserAction()
+    {
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
+
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+
+        $this->client->request('GET', '/users');
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(403, $statusCode);
+    }
+
     public function testCreateAction()
     {
         $this->login();

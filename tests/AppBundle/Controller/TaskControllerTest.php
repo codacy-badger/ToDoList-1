@@ -146,9 +146,38 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Superbe")')->count());
     }
 
+    public function testDeleteAnonymousWhileNotAdminAction()
+    {
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
+
+        $token = new UsernamePasswordToken('user', 'user', $firewallName, array('ROLE_USER'));
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+
+        $this->createTask();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+
+        $this->client->request('GET', 'tasks/' . $taskId . '/delete');
+        $crawler = $this->client->followRedirect();
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Oops ! Vous devez être administrateur pour supprimer une tâche anonyme.")')->count());
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $this->em->remove($task);
+        $this->em->flush();
+    }
+
     public function testDeleteAuthorAction()
     {
-        $this->login();
         $this->createTask();
 
         $user = new User();
@@ -186,4 +215,59 @@ class TaskControllerTest extends WebTestCase
         $this->em->remove($user);
         $this->em->flush();
     }
+
+    public function testDeleteBadAuthorAction()
+    {
+        $this->createTask();
+
+        $author = new User();
+        $author->setUsername('testUser')
+            ->setPassword('testPassword')
+            ->setEmail('testEmail@test.com')
+            ->setRoles(array('ROLE_USER'));
+
+        $this->em->persist($author);
+
+        $user = new User();
+        $user->setUsername('badUser')
+            ->setPassword('badPassword')
+            ->setEmail('badEmail@test.com')
+            ->setRoles(array('ROLE_USER'));
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $taskId = $task->getId();
+        $task->setAuthor($author);
+
+        $session = $this->client->getContainer()->get('session');
+        $firewallName = 'main';
+
+        $token = new UsernamePasswordToken($user, null, $firewallName, $user->getRoles());
+        $session->set('_security_' . $firewallName, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+
+        $this->client->request('GET', 'tasks/' . $taskId . '/delete');
+        $crawler = $this->client->followRedirect();
+        $statusCode = $this->client->getResponse()->getStatusCode();
+        $this->assertSame(200, $statusCode);
+        $this->assertSame(1, $crawler->filter('html:contains("Oops ! Vous ne pouvez supprimer que vos propres tâches.")')->count());
+
+        $author = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['username' => 'testUser']);
+        $this->em->remove($author);
+        $user = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['username' => 'badUser']);
+        $this->em->remove($user);
+        $task = $this->em->getRepository('AppBundle:Task')
+            ->findOneBy(['title' => 'testTitle']);
+        $this->em->remove($task);
+        $this->em->flush();
+    }
+
 }
